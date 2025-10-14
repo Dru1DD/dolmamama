@@ -9,15 +9,14 @@
     "lint": "eslint",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:migrate:prod": "prisma migrate deploy",
-    "prisma:migrate:reset-local": "APP_ENV=local prisma migrate reset",
     "prisma:seed": "prisma db seed",
-    "prisma:seed:local": "APP_ENV=local prisma db seed",
     "prisma:studio": "prisma studio",
     "prisma:setup": "pnpm prisma:generate && pnpm prisma:migrate"
   },
   "dependencies": {
+    "@prisma/client": "6.17.1",
     "@tanstack/react-query": "^5.90.3",
     "next": "15.5.5",
     "react": "19.1.0",
