@@ -6,7 +6,16 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:migrate:prod": "prisma migrate deploy",
+    "prisma:migrate:reset-local": "APP_ENV=local prisma migrate reset",
+    "prisma:seed": "prisma db seed",
+    "prisma:seed:local": "APP_ENV=local prisma db seed",
+    "prisma:studio": "prisma studio",
+    "prisma:setup": "pnpm prisma:generate && pnpm prisma:migrate"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.3",
@@ -22,8 +31,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.5",
+    "prisma": "^6.17.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@10.16.1+sha512.0e155aa2629db8672b49e8475da6226aa4bdea85fdcdfdc15350874946d4f3c91faaf64cbdc4a5d1ab8002f473d5c3fcedcd197989cf0390f9badd3c04678706"
+  "packageManager": "pnpm@10.16.1"
 }
