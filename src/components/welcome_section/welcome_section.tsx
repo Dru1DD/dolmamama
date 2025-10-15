@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Image from '@/components/image/image';
 import Button from '@/components/button';
 import { url } from 'inspector';
@@ -16,6 +17,20 @@ const WelcomeSection = () => {
         backgroundColor: 'black',
       }}
     >
+=======
+import Image from "next/image";
+import backgroundImage from "@/assets/background/welcome.jpg";
+
+const WelcomeSection = () => {
+  return (
+    <section className="relative w-full min-h-screen flex justify-center items-center">
+      <Image
+        src={backgroundImage}
+        alt="background"
+        sizes="cover"
+        className="w-full h-screen absolute z-[-1]"
+      />
+>>>>>>> main
       <div
         className="relative z-5 px-6 
             sm:px-10 
@@ -27,11 +42,23 @@ const WelcomeSection = () => {
             sm:p-12 pt-15
             h-100 w-250"
       >
+<<<<<<< HEAD
         <h1 className="text-4x1 sm:text-8xl font-bold mb-2 font-serif">Gamardżoba,</h1>
         <h3 className="tex-3xl sm:text-6xl italic mb-4 font-serif">Genatsvale!</h3>
         <p className="text-center text-xl font-bold">Restauracja kuchni gruzinskiej</p>
 
         <div>\\\</div>
+=======
+        <h1 className="text-4x1 sm:text-8xl font-bold mb-2 font-serif">
+          Gamardżoba,
+        </h1>
+        <h3 className="tex-3xl sm:text-6xl italic mb-4 font-serif">
+          Genatsvale!
+        </h3>
+        <p className="text-center text-xl font-bold">
+          Restauracja kuchni gruzinskiej
+        </p>
+>>>>>>> main
         <button
           className=" bg-white text-black 
                 font-bold px-8 py-3 
