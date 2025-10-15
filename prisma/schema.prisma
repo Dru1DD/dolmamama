@@ -1,0 +1,19 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Menu {
+  id    String   @id @default(uuid())
+  name  String   @unique()
+  desciption String
+  imageUrl  String
+  price   Int
+}
