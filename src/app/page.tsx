@@ -1,6 +1,6 @@
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import WelcomeSection from "@/components/welcome_section/welcome_section";
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import WelcomeSection from '@/components/welcome_section/welcome_section';
 
 function App() {
   return (
