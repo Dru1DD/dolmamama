@@ -1,4 +1,3 @@
-import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
@@ -16,6 +15,9 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
+        if (!credentials) {
+          throw new Error('Brak danych');
+        }
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
@@ -42,7 +44,3 @@ export const authOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
-
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
