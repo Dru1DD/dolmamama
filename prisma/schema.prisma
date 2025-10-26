@@ -10,11 +10,11 @@ datasource db {
 }
 
 model Menu {
-  id         String @id @default(uuid())
-  name       String @unique()
-  desciption String
-  imageUrl   String
-  price      Int
+  id          String @id @default(uuid())
+  name        String @unique()
+  description String
+  imageUrl    String
+  price       Int
 }
 
 model Reservation {

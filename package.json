@@ -2,6 +2,7 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "npx prisma generate && next build",
@@ -11,7 +12,7 @@
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:seed": "prisma db seed",
+    "prisma:seed":  "ts-node prisma/seed.ts",
     "prisma:studio": "prisma studio",
     "prisma:setup": "pnpm prisma:generate && pnpm prisma:migrate"
   },
@@ -24,7 +25,6 @@
     "next": "15.5.5",
     "next-auth": "^4.24.11",
     "prettier": "^3.6.2",
-    "prisma": "^6.17.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-toastify": "^11.0.5"
@@ -42,7 +42,9 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "prisma": "^6.17.1",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "packageManager": "pnpm@10.16.1"
