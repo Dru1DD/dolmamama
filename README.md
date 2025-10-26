@@ -109,12 +109,78 @@ The project uses several configuration files:
 - `eslint.config.mjs` - ESLint configuration
 - `prisma/schema.prisma` - Database schema
 
-
 ## Test data
+
 User with customer role:
+
 - `email` - `user@gmail.com`
 - `password` - `user1234`
 
 User with admin role:
+
 - `email` - `admin@gmail.com`
 - `password` - `user1234`
+
+## 🧪 API Testing with Postman
+
+Follow these steps to test the authentication endpoints:
+
+### A. User Registration
+
+1. Open Postman and create a new request
+2. Set method to **POST**
+3. Enter URL: `http://localhost:3000/api/auth/registration`
+4. Go to **Body** tab → select **raw** → choose **JSON**
+5. Enter the following JSON:
+
+```json
+{
+  "name": "Test User",
+  "email": "test@example.com",
+  "password": "123456"
+}
+```
+
+6. Send the request → should return **201 Created**
+
+### B. User Login via NextAuth
+
+1. Create a new request
+2. Set method to **POST**
+3. Enter URL: `http://localhost:3000/api/auth/signin/credentials`
+4. Go to **Body** tab → select **raw** → choose **JSON**
+5. Enter the following JSON:
+
+```json
+{
+  "email": "test@example.com",
+  "password": "123456"
+}
+```
+
+6. Send the request → server will return session or token (if JWT is configured)
+
+### C. Get Session Information
+
+1. Create a new request
+2. Set method to **GET**
+3. Enter URL: `http://localhost:3000/api/auth/session`
+4. Add session cookies from step B (Postman will automatically save them if Interceptor is enabled)
+5. Send the request → returns information about the current user
+
+### 📝 Important Notes
+
+Make sure your `.env` file contains:
+
+```env
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_long_random_secret_string
+```
+
+For CredentialsProvider in NextAuth, the email and password must match your Prisma database records.
+
+### 🔧 Troubleshooting
+
+- Ensure the development server is running (`pnpm dev`)
+- Check that the database is properly configured and migrated
+- Verify that the test user exists in the database before attempting login
