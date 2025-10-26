@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { validateEmail, validatePassword } from '@/utils/validation';
 import { toast } from 'react-toastify';
+import Button from '@/components/button';
 
 interface InputProperty {
   value: string;
@@ -15,9 +16,11 @@ const LoginPage = () => {
   const [email, setEmail] = useState<InputProperty>({ value: '' });
   const [password, setPassword] = useState<InputProperty>({ value: '' });
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    setIsLoading(true);
     let hasError = false;
 
     if (!validateEmail(email.value)) {
@@ -40,6 +43,8 @@ const LoginPage = () => {
       password: password.value,
       callbackUrl: '/dashboard',
     });
+
+    setIsLoading(false);
 
     if (signInRes?.error) {
       toast(signInRes.error, { type: 'error' });
@@ -94,9 +99,12 @@ const LoginPage = () => {
         />
         {password.error && <p className="text-red-500 text-sm mb-3">{password.error}</p>}
 
-        <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 transition py-2 rounded font-bold mt-2">
-          Zaloguj się
-        </button>
+        <Button
+          type="submit"
+          label={'Zaloguj się'}
+          isLoading={isLoading}
+          className="w-full bg-blue-600 hover:bg-blue-700 transition py-2 rounded font-bold mt-2"
+        />
 
         <div className="text-center mt-4 text-sm">
           Nie masz konta?{' '}

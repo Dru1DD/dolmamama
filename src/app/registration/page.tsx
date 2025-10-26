@@ -3,9 +3,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
+import Button from '@/components/button';
 import { useRegistrationMutation } from '@/hooks/use-registration-mutation';
-import { validateEmail, validatePassword } from '@/utils/validation';
 import { signIn } from 'next-auth/react';
+import { validateEmail, validatePassword } from '@/utils/validation';
 
 interface InputProperty {
   value: string;
@@ -13,9 +14,12 @@ interface InputProperty {
 }
 
 const LoginPage = () => {
+  const [name, setName] = useState<InputProperty>({ value: '' });
   const [email, setEmail] = useState<InputProperty>({ value: '' });
   const [password, setPassword] = useState<InputProperty>({ value: '' });
   const [confirmPassword, setConfirmPassword] = useState<InputProperty>({ value: '' });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const { mutateAsync: signUpMutation } = useRegistrationMutation();
 
@@ -23,7 +27,10 @@ const LoginPage = () => {
     try {
       event.preventDefault();
 
-      if (!email.value || !password.value || !confirmPassword.value) {
+      setIsLoading(true);
+
+      if (!name.value || !email.value || !password.value || !confirmPassword.value) {
+        setName((prev) => ({ ...prev, error: !prev.value ? 'Imię jest wymagane' : prev.error }));
         setEmail((prev) => ({ ...prev, error: !prev.value ? 'Email jest wymagany' : prev.error }));
         setPassword((prev) => ({ ...prev, error: !prev.value ? 'Hasło jest wymagane' : prev.error }));
         setConfirmPassword((prev) => ({
@@ -34,6 +41,7 @@ const LoginPage = () => {
       }
 
       if (
+        !name.value ||
         !validateEmail(email.value) ||
         !validatePassword(password.value) ||
         password.value !== confirmPassword.value
@@ -42,7 +50,7 @@ const LoginPage = () => {
       }
 
       await signUpMutation({
-        name: 'CHUJ',
+        name: name.value,
         email: email.value,
         password: password.value,
       });
@@ -54,15 +62,24 @@ const LoginPage = () => {
       });
 
       toast('Użytkownik dodany');
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
       toast((error as Error).message, { type: 'error' });
     }
   };
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>, type: 'email' | 'password' | 'confirm') => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>, type: 'name' | 'email' | 'password' | 'confirm') => {
     const value = event.target.value;
     let error: string | undefined;
+
+    if (type === 'name') {
+      if (!name.value) {
+        error = 'Podaj imię';
+      }
+      setName({ value, error });
+    }
 
     if (type === 'email') {
       if (!validateEmail(value)) {
@@ -104,6 +121,16 @@ const LoginPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
       <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Rejestracja</h2>
+        <input
+          type="text"
+          placeholder="Name"
+          className={`w-full mb-1 px-4 py-2 rounded bg-gray-700 focus:outline-none ${
+            name.error ? 'border border-red-500' : ''
+          }`}
+          value={name.value}
+          onChange={(e) => handleInputChange(e, 'name')}
+        />
+        {name.error && <p className="text-red-500 text-sm mb-3">{name.error}</p>}
 
         <input
           type="email"
@@ -138,10 +165,12 @@ const LoginPage = () => {
         />
         {confirmPassword.error && <p className="text-red-500 text-sm mb-3">{confirmPassword.error}</p>}
 
-        <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 transition py-2 rounded font-bold mt-2">
-          Zaloguj się
-        </button>
-
+        <Button
+          type="submit"
+          label={'Zarejestruj się'}
+          isLoading={isLoading}
+          className="w-full bg-blue-600 hover:bg-blue-700 transition py-2 rounded font-bold mt-2"
+        />
         <div className="text-center mt-4">
           <span>
             Masz konta?{' '}

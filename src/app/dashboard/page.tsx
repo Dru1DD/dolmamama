@@ -1,9 +1,12 @@
 'use client';
 
 import Button from '@/components/button';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 const DashboardPage = () => {
+  const { data: session } = useSession();
+  console.log('Session', session);
+
   const handleSignOutClicked = () => {
     void signOut();
   };
