@@ -7,7 +7,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = ({ label, isLoading, ...props }: ButtonProps) => {
-  return <button {...props}>{isLoading ? <Loading /> : label}</button>;
+  return (
+    <button {...props}>
+      {isLoading ? (
+        <div className={'w-full flex justify-center items-center'}>
+          <Loading />
+        </div>
+      ) : (
+        label
+      )}
+    </button>
+  );
 };
 
 export default Button;
