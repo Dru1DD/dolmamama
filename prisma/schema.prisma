@@ -1,7 +1,6 @@
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma/client"
 }
 
 datasource db {
@@ -11,32 +10,32 @@ datasource db {
 }
 
 model Menu {
-  id    String   @id @default(uuid())
-  name  String   @unique()
-  desciption String
-  imageUrl  String
-  price   Int
+  id          String @id @default(uuid())
+  name        String @unique()
+  description String
+  imageUrl    String
+  price       Int
 }
 
 model Reservation {
-  id Int @id @default(autoincrement())
-  name String
+  id           Int      @id @default(autoincrement())
+  name         String
   phone_number String
-  email String
-  time DateTime
-  notes String
-  guests Int 
+  email        String
+  time         DateTime
+  notes        String
+  guests       Int
 }
 
 model User {
-  id            String   @id @default(cuid())
-  name          String?
-  email         String?  @unique
-  emailVerified DateTime?
-  image         String?
-  password      String
-  accounts      Account[]
-  sessions      Session[]
+  id       String    @id @default(cuid())
+  name     String?
+  email    String?   @unique
+  image    String?
+  password String
+  role     Role      @default(Customer)
+  accounts Account[]
+  sessions Session[]
 }
 
 model Account {
@@ -45,14 +44,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String?  @db.Text
-  access_token      String?  @db.Text
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String?  @db.Text
+  id_token          String? @db.Text
   session_state     String?
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -71,4 +70,9 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum Role {
+  Customer
+  Admin
 }
