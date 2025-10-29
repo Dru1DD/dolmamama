@@ -1,9 +1,18 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Playwrite_PL } from 'next/font/google';
+import { Geist, Geist_Mono, Great_Vibes, Libre_Baskerville } from 'next/font/google';
 import { RootProviders } from '@/providers/root-providers';
+import '../styles/global.css';
 
-const playWritePL = Playwrite_PL({
-  variable: '--font-playwrite',
+const libreBaskerville = Libre_Baskerville({
+  variable: '--font-libre-baskerville',
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
+
+const greatVibes = Great_Vibes({
+  variable: '--font-great-vibes',
+  subsets: ['latin'],
+  weight: '400',
 });
 
 const geistSans = Geist({
@@ -28,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playWritePL.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} antialiased`}>
         <RootProviders>{children}</RootProviders>
       </body>
     </html>
