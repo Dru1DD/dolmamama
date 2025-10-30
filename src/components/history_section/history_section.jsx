@@ -7,7 +7,7 @@ const History_Section = () => {
        mx-auto 
        px-3
        md:px-12 
-       flex flex-col md:flex
+       flex flex-col md:flex-col
        items-center justify-between gap-12
        md:w-1/2"
       >
@@ -20,6 +20,11 @@ const History_Section = () => {
           rodzinnych biesiadach, nazwał swój lokal „Dolmamama”. Lewan chciał stworzyć miejsce, w którym każdy gość
           mógłby poczuć ciepło gruzińskiej gościnności. Używał wyłącznie świeżych lokalnych składników i stosował
           tradycyjne przepisy, aby odtworzyć prawdziwe smaki Kaukazu.
+          <br />Z czasem „Dolmamama” stała się popularnym miejscem wśród mieszkańców i turystów. Gości przyciągały nie
+          tylko aromaty tradycyjnych potraw, ale też serdeczność Lewana, który każdego witał jak dawnego przyjaciela.
+          Pewnego wieczoru do restauracji przyszła starsza kobieta — okazało się, że znała jego mamę. Po spróbowaniu
+          dolmy wzruszyła się do łez, mówiąc, że smak przypomniał jej młodość. Dla Lewana był to znak, że osiągnął swój
+          cel — stworzył miejsce, w którym jedzenie łączy ludzi i budzi wspomnienia.
         </p>
 
         <div
@@ -44,13 +49,13 @@ const History_Section = () => {
 
       <div className="md:w-1/2 flex flex-wrap justify-center gap-6">
         <div className="shadow-xl rounded-m overflow-hidden object-cover -mb-20 z-20">
-          <Image src={'/images/history_section/hs1.jpg'} width={250} height={180} alt="" />
+          <Image src={'/images/history_section/hs1.jpg'} width={250} height={150} alt="" />
         </div>
         <div className="shadow-xl rounded-m overflow-hidden mb-[-70px] z-10">
-          <Image src={'/images/history_section/hs2.jpg'} width={250} height={180} alt="" />
+          <Image src={'/images/history_section/hs2.jpg'} width={250} height={150} alt="" />
         </div>
         <div className="shadow-xl rounded-m overflow-hidden">
-          <Image src={'/images/history_section/hs3.jpg'} width={250} height={180} alt="" />
+          <Image src={'/images/history_section/hs3.jpg'} width={250} height={150} alt="" />
         </div>
       </div>
     </section>

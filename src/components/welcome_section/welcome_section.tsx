@@ -9,7 +9,7 @@ const WelcomeSection = () => {
             max-w-[800px]
             mx-auto shadow-2xl
             rounded-3xl backdrop-blur-md p-8
-            sm:p-12 pt-15
+            sm:p-12 pt-20
             h-110 w-400 flex flex-col justify-center items-center
             inset-0 bg-black/5
             transform hover:scale-[1.02] transition-all duration-600
