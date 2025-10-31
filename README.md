@@ -2,6 +2,8 @@
 
 A modern web application built with Next.js, featuring authentication, database management with Prisma, and a beautiful UI with Tailwind CSS.
 
+![CI](https://github.com/Dru1DD/dolmamama/actions/workflows/ci.yml/badge.svg)
+
 ## 🚀 Tech Stack
 
 - **Framework**: Next.js 15.5.5 with Turbopack
