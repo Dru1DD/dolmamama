@@ -35,11 +35,6 @@ export const POST = async (req: NextRequest) => {
     const body = await req.json();
     const { password, email, name } = body;
 
-    console.table({
-      password,
-      email,
-    });
-
     const existingUser = await prisma.user.findUnique({
       where: {
         email,
@@ -47,12 +42,12 @@ export const POST = async (req: NextRequest) => {
     });
 
     if (existingUser) {
-      throw new Error('User with this email already exists');
+      return NextResponse.json({ message: 'User with this email already exists' }, { status: 500 });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await prisma.user.create({
+    await prisma.user.create({
       data: {
         name: name,
         email: email,
