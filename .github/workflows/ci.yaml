@@ -2,12 +2,13 @@ name: CI
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
     branches: [main, develop]
 
 jobs:
   build-and-test:
+    needs: build-and-test
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +32,9 @@ jobs:
 
       - name: Generate Prisma client
         run: pnpm prisma:generate
+
+      - name: Lint code
+        run: pnpm lint
 
       - name: Check formatting
         run: pnpm format:check
