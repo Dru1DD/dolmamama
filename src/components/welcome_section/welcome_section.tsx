@@ -13,7 +13,7 @@ const WelcomeSection = () => {
             h-110 w-400 flex flex-col justify-center items-center
             inset-0 bg-black/5
             transform hover:scale-[1.02] transition-all duration-600
-            hover:shadow-3xl
+            hover:shadow-3xl mt-20
             "
       >
         <h1

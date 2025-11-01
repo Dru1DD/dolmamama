@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Great_Vibes, Libre_Baskerville } from 'next/font/google';
 import { RootProviders } from '@/providers/root-providers';
 import '../styles/global.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const libreBaskerville = Libre_Baskerville({
   variable: '--font-libre-baskerville',

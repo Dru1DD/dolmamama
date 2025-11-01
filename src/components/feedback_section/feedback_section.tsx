@@ -1,5 +1,7 @@
-const feedbackSection = () => {
-  return <section></section>;
+const FeedbackSection = () => {
+  return <section>
+    
+  </section>;
 };
 
-export default feedbackSection;
+export default FeedbackSection;
