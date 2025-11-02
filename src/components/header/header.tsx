@@ -18,15 +18,19 @@ const Header = () => {
     gap-2  bg-white  shadow-2xl mt-5 rounded-3xl"
     >
       <nav></nav>
-      <div className="justify-center gap-20 flex font-semibold text-xl">
+      <div className="justify-center gap-15 flex font-semibold text-xl">
         <Image src={'/images/header/logo_header.png'} width={70} height={70} alt="" />
-        <Button label="Historia" className="rounded-xl" />
-        <Button label="Rezerwacja" className="rounded-xl" />
-        <Button label="Menu" className="rounded-xl" />
-        <Button label="Dostawa" className="rounded-xl" />
-        <Button label="Opinie" className="rounded-xl" />
-        <Button label="Kontakt" className="rounded-xl" />
-        <Button label="Login" className="border border-red rounded-xl cursor-pointer" onClick={handleNavigateToLogin} />
+        <Button label="Historia" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5" />
+        <Button label="Rezerwacja" className="hover:rounded-xl hover:bg-gray-100 duration-500 p-5 hover:shadows-xl" />
+        <Button label="Menu" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5 " />
+        <Button label="Dostawa" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5" />
+        <Button label="Opinie" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5" />
+        <Button label="Kontakt" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5" />
+        <Button
+          label="Login"
+          className="hover:rounded-xl hover:bg-gray-100 duration-500 p-5 hover:shadows-2xl cursor-pointer"
+          onClick={handleNavigateToLogin}
+        />
       </div>
     </header>
   );

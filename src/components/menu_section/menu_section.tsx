@@ -81,7 +81,7 @@ const MenuSection = () => {
   return (
     <section>
       <h1
-        className="sm:text-6xl lg:text-[7rem] italic  w-full text-center whitespace-nowrap leading-tight mt-10"
+        className="sm:text-6xl lg:text-[5rem] italic  w-full text-center whitespace-nowrap leading-tight mt-10"
         style={{ fontFamily: 'var(--font-great-vibes), cursive' }}
       >
         Nasze menu

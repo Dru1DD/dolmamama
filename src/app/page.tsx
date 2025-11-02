@@ -4,6 +4,7 @@ import WelcomeSection from '@/components/welcome_section/welcome_section';
 import HistorySection from '@/components/history_section/history_section';
 import ReservationSection from '@/components/reservation_section/reservation_section';
 import MenuSection from '@/components/menu_section/menu_section';
+import FeedbackSection from '@/components/feedback_section/feedback_section';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <HistorySection />
       <ReservationSection />
       <MenuSection />
+      <FeedbackSection />
       <Footer />
     </main>
   );

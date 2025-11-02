@@ -11,7 +11,10 @@ const History_Section = () => {
        items-center justify-between gap-12
        md:w-1/2"
       >
-        <h2 className="text-5xl">
+        <h2
+          className="sm:text-5xl lg:text-[5rem] italic  w-full text-center whitespace-nowrap leading-tight mt-10"
+          style={{ fontFamily: 'var(--font-great-vibes), cursive' }}
+        >
           Nasza <span className="text-gray-500">Historia</span>
         </h2>
         <p className="text-xl">
