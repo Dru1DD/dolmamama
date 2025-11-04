@@ -23,62 +23,62 @@ const NextArrow = ({ onClick }: any) => (
   </button>
 );
 
+const dishes = [
+  {
+    id: 1,
+    name: 'Chinkali',
+    img: '/images/menu_section/khinkali.jpg',
+    desc: 'Soczyste gruzińskie pierożki z mięsnym farszem i bulionem — najlepiej zjeść rękami!',
+  },
+  {
+    id: 2,
+    name: 'Chaczapuri adżarskie',
+    img: '/images/menu_section/khachapuri.jpg',
+    desc: 'Złociste ciasto w kształcie łódki, wypełnione roztopionym serem, masłem i jajkiem — klasyk z Batumi!',
+  },
+  {
+    id: 3,
+    name: 'Dolma',
+    img: '/images/menu_section/dolma.jpg',
+    desc: 'Liście winogron faszerowane aromatycznym ryżem i przyprawami — smak Kaukazu w każdym kęsie.',
+  },
+  {
+    id: 4,
+    name: 'Szaszłyk',
+    img: '/images/menu_section/shashlyk.jpg',
+    desc: 'Mięso marynowane w ziołach i przyprawach, grillowane do perfekcji — prosto z gruzińskiego ognia.',
+  },
+  {
+    id: 5,
+    name: 'Baklava',
+    img: '/images/menu_section/baklava.jpg',
+    desc: 'Kruche ciasto filo, orzechy i miód — słodkie zakończenie gruzińskiej uczty. Najlepiej smakuje z herbatą!',
+  },
+];
+
+const settings = {
+  infinite: true,
+  speed: 700,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  pauseOnHover: true,
+  prevArrow: <PrevArrow />,
+  nextArrow: <NextArrow />,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: { slidesToShow: 2 },
+    },
+    {
+      breakpoint: 640,
+      settings: { slidesToShow: 1 },
+    },
+  ],
+};
+
 const MenuSection = () => {
-  const dishes = [
-    {
-      id: 1,
-      name: 'Chinkali',
-      img: '/images/menu_section/khinkali.jpg',
-      desc: 'Soczyste gruzińskie pierożki z mięsnym farszem i bulionem — najlepiej zjeść rękami!',
-    },
-    {
-      id: 2,
-      name: 'Chaczapuri adżarskie',
-      img: '/images/menu_section/khachapuri.jpg',
-      desc: 'Złociste ciasto w kształcie łódki, wypełnione roztopionym serem, masłem i jajkiem — klasyk z Batumi!',
-    },
-    {
-      id: 3,
-      name: 'Dolma',
-      img: '/images/menu_section/dolma.jpg',
-      desc: 'Liście winogron faszerowane aromatycznym ryżem i przyprawami — smak Kaukazu w każdym kęsie.',
-    },
-    {
-      id: 4,
-      name: 'Szaszłyk',
-      img: '/images/menu_section/shashlyk.jpg',
-      desc: 'Mięso marynowane w ziołach i przyprawach, grillowane do perfekcji — prosto z gruzińskiego ognia.',
-    },
-    {
-      id: 5,
-      name: 'Baklava',
-      img: '/images/menu_section/baklava.jpg',
-      desc: 'Kruche ciasto filo, orzechy i miód — słodkie zakończenie gruzińskiej uczty. Najlepiej smakuje z herbatą!',
-    },
-  ];
-
-  const settings = {
-    infinite: true,
-    speed: 700,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 640,
-        settings: { slidesToShow: 1 },
-      },
-    ],
-  };
-
   return (
     <section>
       <h1
