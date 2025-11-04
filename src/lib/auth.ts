@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from './prisma';
 import bcrypt from 'bcrypt';
 
 export const authOptions = {
-  adapter: PrismaAdapter(prisma as any),
+  adapter: PrismaAdapter(prisma as unknown as Parameters<typeof PrismaAdapter>[0]),
   providers: [
     CredentialsProvider({
       name: 'credentials',
@@ -43,7 +44,7 @@ export const authOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    // @ts-ignore
+    // @ts-expect-error
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
@@ -51,7 +52,7 @@ export const authOptions = {
       }
       return token;
     },
-    // @ts-ignore
+    // @ts-expect-error
     async session({ session, token }) {
       if (token) {
         session.user.id = token.id;

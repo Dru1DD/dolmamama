@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 const History_Section = () => {
   return (
     <section className="py-16 bg-white flex" id="history">
@@ -30,8 +31,7 @@ const History_Section = () => {
           cel — stworzył miejsce, w którym jedzenie łączy ludzi i budzi wspomnienia.
         </p>
 
-        <div
-          className="flex flex-wrap justify-center md:justify-start gap-10 mt-8 text-2xl">
+        <div className="flex flex-wrap justify-center md:justify-start gap-10 mt-8 text-2xl">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-gray-500 mb-l">Najlepsze</h3>
             <p>Wino</p>
