@@ -8,7 +8,7 @@ import FeedbackSection from '@/components/feedback_section/feedback_section';
 
 function App() {
   return (
-    <main className="relative w-full h-full flex flex-col">
+    <main className="overflow-hidden relative w-full h-full flex flex-col">
       <Header />
       <WelcomeSection />
       <HistorySection />

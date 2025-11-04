@@ -1,7 +1,7 @@
 import Image from 'next/image';
 const History_Section = () => {
   return (
-    <section className="py-16 bg-white flex">
+    <section className="py-16 bg-white flex" id="history">
       <div
         className="container
        mx-auto 
@@ -31,9 +31,7 @@ const History_Section = () => {
         </p>
 
         <div
-          className="flex flex-wrap justify-center
-        md:justify-start gap-10 mt-8 text-2xl"
-        >
+          className="flex flex-wrap justify-center md:justify-start gap-10 mt-8 text-2xl">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-gray-500 mb-l">Najlepsze</h3>
             <p>Wino</p>
@@ -50,7 +48,7 @@ const History_Section = () => {
         </div>
       </div>
 
-      <div className="md:w-1/2 flex flex-wrap justify-center gap-6">
+      <div className="hidden md:flex md:w-1/2 flex-wrap justify-center gap-6">
         <div className="shadow-xl rounded-m overflow-hidden object-cover -mb-20 z-20">
           <Image src={'/images/history_section/hs1.jpg'} width={250} height={150} alt="" />
         </div>

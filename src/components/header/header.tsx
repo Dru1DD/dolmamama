@@ -1,37 +1,79 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/button';
+import Link from 'next/link';
 import Image from 'next/image';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 const Header = () => {
   const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleNavigateToLogin = () => {
     router.push('/login');
+    setMenuOpen(false);
   };
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
     <header
-      className="absolute z-1 top-10 left-1/2 transform -translate-x-1/2 
-    -translate-y-1/2 px-20 py-5 flex flex-row 
-    gap-2  bg-white  shadow-2xl mt-5 rounded-3xl"
+      className="fixed top-0 left-0 w-full z-50 bg-white shadow-lg 
+      px-6 py-4 flex justify-between items-center rounded-b-3xl"
     >
-      <nav></nav>
-      <div className="justify-center gap-15 flex font-semibold text-xl">
-        <Image src={'/images/header/logo_header.png'} width={70} height={70} alt="" />
-        <Button label="Historia" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5" />
-        <Button label="Rezerwacja" className="hover:rounded-xl hover:bg-gray-100 duration-500 p-5 hover:shadows-xl" />
-        <Button label="Menu" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5 " />
-        <Button label="Dostawa" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5" />
-        <Button label="Opinie" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5" />
-        <Button label="Kontakt" className="hover:rounded-xl hover:bg-gray-100 duration-500 hover:shadows-xl p-5" />
+      <div className="flex items-center gap-3">
+        <Image
+          src="/images/header/logo_header.png"
+          width={60}
+          height={60}
+          alt="Logo"
+          className="cursor-pointer"
+          onClick={() => router.push('/')}
+        />
+        <span className="font-semibold text-lg hidden sm:block">Restauracja</span>
+      </div>
+
+      <nav className="hidden lg:flex gap-3 font-semibold text-lg">
+        <Link href="#history" className="hover:bg-gray-100 duration-300 rounded-xl p-3">
+          Historia
+        </Link>
+        <Button label="Rezerwacja" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
+        <Button label="Menu" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
+        <Button label="Dostawa" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
+        <Button label="Opinie" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
+        <Button label="Kontakt" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
         <Button
           label="Login"
-          className="hover:rounded-xl hover:bg-gray-100 duration-500 p-5 hover:shadows-2xl cursor-pointer"
+          className="hover:bg-gray-100 duration-300 rounded-xl p-3 cursor-pointer"
           onClick={handleNavigateToLogin}
         />
+      </nav>
+
+      <div className="lg:hidden">
+        <button onClick={toggleMenu} aria-label="Toggle Menu">
+          {menuOpen ? <FiX size={30} /> : <FiMenu size={30} />}
+        </button>
       </div>
+
+      {menuOpen && (
+        <div
+          className="absolute top-full left-0 w-full bg-white shadow-2xl 
+          flex flex-col items-center py-5 gap-3 font-medium text-lg 
+          animate-slide-down"
+        >
+          <Link href="#history" className="hover:bg-gray-100 rounded-xl p-3 w-4/5 text-center">
+            Historia
+          </Link>
+          <Button label="Rezerwacja" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
+          <Button label="Menu" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
+          <Button label="Dostawa" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
+          <Button label="Opinie" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
+          <Button label="Kontakt" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
+          <Button label="Login" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" onClick={handleNavigateToLogin} />
+        </div>
+      )}
     </header>
   );
 };
