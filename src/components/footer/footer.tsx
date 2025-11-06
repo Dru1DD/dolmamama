@@ -1,6 +1,8 @@
+'use client';
+
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-200 mt-10 py-10 px-5">
+    <footer id="contact" className="w-full bg-gray-200 mt-10 py-10 px-5">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
         <div>
           <h2 className="font-bold text-lg mb-3">Dane kontaktowe</h2>
@@ -15,7 +17,7 @@ const Footer = () => {
             <li>Środa: 12:00 - 23:00</li>
             <li>Czwartek: 12:00 - 23:00</li>
             <li>Piątek: 12:00 - 24:00</li>
-            <li className="font-bold">Sobota: 12:00 - 24:00</li>
+            <li>Sobota: 12:00 - 24:00</li>
             <li>Niedziela: 12:00 - 23:00</li>
           </ul>
         </div>
@@ -45,6 +47,11 @@ const Footer = () => {
               font-semibold text-lg px-6 py-3 rounded-2xl
              hover:bg-gray-300 transition-all duration-500
                hover:shadow-2xl mt-5"
+            onClick={() => {
+              const destination = '52.22880071592968, 20.9975018134921';
+              const url = `https://www.google.com/maps/dir/?api=1&destination=${destination}&travelmode=driving`;
+              window.open(url, '_blank');
+            }}
           >
             Dowiedz się, jak dojechać
           </button>

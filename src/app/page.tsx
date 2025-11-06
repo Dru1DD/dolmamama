@@ -1,10 +1,10 @@
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import WelcomeSection from '@/components/welcome_section/welcome_section';
-import HistorySection from '@/components/history_section/history_section';
-import ReservationSection from '@/components/reservation_section/reservation_section';
-import MenuSection from '@/components/menu_section/menu_section';
-import FeedbackSection from '@/components/feedback_section/feedback_section';
+import WelcomeSection from '@/components/welcome_section';
+import HistorySection from '@/components/history_section';
+import ReservationSection from '@/components/reservation_section';
+import MenuSection from '@/components/menu_section';
+import FeedbackSection from '@/components/feedback_section';
 
 function App() {
   return (

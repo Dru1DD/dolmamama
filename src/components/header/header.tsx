@@ -16,6 +16,13 @@ const Header = () => {
     setMenuOpen(false);
   };
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (

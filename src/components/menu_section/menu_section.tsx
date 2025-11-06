@@ -3,25 +3,9 @@
 
 import Slider from 'react-slick';
 import Image from 'next/image';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-
-const PrevArrow = ({ onClick }: any) => (
-  <button
-    onClick={onClick}
-    className="absolute -left-10 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-gray-400 duration-500 rounded-full p-2 shadow-md"
-  >
-    <FaChevronLeft />
-  </button>
-);
-
-const NextArrow = ({ onClick }: any) => (
-  <button
-    onClick={onClick}
-    className="absolute -right-10 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-gray-400 duration-500 rounded-full p-2 shadow-md"
-  >
-    <FaChevronRight />
-  </button>
-);
+import { PrevArrow, NextArrow } from './arrows';
+import MenuPage from '@/app/menu/page';
+import { useRouter } from 'next/navigation';
 
 const dishes = [
   {
@@ -79,8 +63,14 @@ const settings = {
 };
 
 const MenuSection = () => {
+  const router = useRouter();
+
+  const handleOrder = () => {
+    router.push('/menu');
+  };
+
   return (
-    <section>
+    <section id="menu">
       <h1
         className="sm:text-6xl lg:text-[5rem] italic  w-full text-center whitespace-nowrap leading-tight mt-10"
         style={{ fontFamily: 'var(--font-great-vibes), cursive' }}
@@ -101,6 +91,7 @@ const MenuSection = () => {
                   <button
                     className="bg-black hover:bg-black/50 text-white font-semibold py-2 px-4 rounded-full transition-all duration-500 shadows-2xl
                       "
+                    onClick={handleOrder}
                   >
                     Zamów teraz
                   </button>

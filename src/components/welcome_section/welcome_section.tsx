@@ -1,4 +1,14 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 const WelcomeSection = () => {
+  const router = useRouter();
+
+  const handleOrder = () => {
+    router.push('/menu');
+  };
+
   return (
     <section className="welcomeSection relative w-full min-h-screen flex justify-center items-center">
       <div
@@ -33,7 +43,9 @@ const WelcomeSection = () => {
                 mt-5 h-18 w-70 text-xl
                 hover:scale-105 hover:-tracking-tight"
         >
-          <span className="relative z-10">Zobaczyć menu</span>
+          <span className="relative z-10" onClick={handleOrder}>
+            Zobaczyć menu
+          </span>
         </button>
       </div>
     </section>

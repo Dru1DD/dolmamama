@@ -1,7 +1,13 @@
 const ReservationSection = () => {
   return (
-    <section className="overflow-hidden reservationSection text-center relative w-full flex flex-col h-full md:h-[40vh] py-5 md:py-0 md:flex-row justify-center items-center mt-10">
-      <div className="container w-2/3 text-black text-xl md:text-3xl bg-amber-50/50 rounded-2xl py-6 md:ml-10">
+    <section
+      id="reservation_section"
+      className="reservationSection text-center relative w-full flex justify-center items-center mt-10"
+    >
+      <div
+        className="container w-2/3 text-black
+      text-3xl bg-amber-50/50 rounded-2xl my-5 p-6 ml-10 "
+      >
         <h1 style={{ fontFamily: 'var(--font-great-vibes), cursive' }} className="text-5xl">
           Spędź swoje urodziny w duchu prawdziwych gruzińskich tradycji
         </h1>

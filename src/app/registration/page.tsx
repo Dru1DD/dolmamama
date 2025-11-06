@@ -118,13 +118,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-white text-black">
+      <form onSubmit={handleSubmit} className="bg-gray-300/50 p-8 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Rejestracja</h2>
         <input
           type="text"
           placeholder="Name"
-          className={`w-full mb-1 px-4 py-2 rounded bg-gray-700 focus:outline-none ${
+          className={`w-full mb-1 px-4 py-2 rounded-2xl bg-white text-black focus:outline-none ${
             name.error ? 'border border-red-500' : ''
           }`}
           value={name.value}
@@ -135,7 +135,7 @@ const LoginPage = () => {
         <input
           type="email"
           placeholder="Email"
-          className={`w-full mb-1 px-4 py-2 rounded bg-gray-700 focus:outline-none ${
+          className={`w-full mb-1 px-4 py-2 rounded-2xl bg-white focus:outline-none ${
             email.error ? 'border border-red-500' : ''
           }`}
           value={email.value}
@@ -146,7 +146,7 @@ const LoginPage = () => {
         <input
           type="password"
           placeholder="Hasło"
-          className={`w-full mb-1 px-4 py-2 rounded bg-gray-700 focus:outline-none ${
+          className={`w-full mb-1 px-4 py-2 rounded-2xl bg-white focus:outline-none ${
             password.error ? 'border border-red-500' : ''
           }`}
           value={password.value}
@@ -157,7 +157,7 @@ const LoginPage = () => {
         <input
           type="password"
           placeholder="Potwierdź hasło"
-          className={`w-full mb-1 px-4 py-2 rounded bg-gray-700 focus:outline-none ${
+          className={`w-full mb-1 px-4 py-2 rounded-2xl bg-white focus:outline-none ${
             confirmPassword.error ? 'border border-red-500' : ''
           }`}
           value={confirmPassword.value}
@@ -169,7 +169,7 @@ const LoginPage = () => {
           type="submit"
           label={'Zarejestruj się'}
           isLoading={isLoading}
-          className="w-full bg-blue-600 hover:bg-blue-700 transition py-2 rounded font-bold mt-2"
+          className="w-full bg-black hover:bg-black/30 shadow-2xl duration-1000 text-white transition py-2 rounded-2xl font-bold mt-2"
         />
         <div className="text-center mt-4">
           <span>
