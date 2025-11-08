@@ -16,10 +16,16 @@ const Header = () => {
     setMenuOpen(false);
   };
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (id: string, offset = 90) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      const elementPosition = section.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -27,8 +33,9 @@ const Header = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-white shadow-lg 
-      px-6 py-4 flex justify-between items-center rounded-b-3xl"
+      className="fixed top-0  w-[90%] mx-auto z-50 bg-white shadow-lg 
+      px-6 py-4 flex justify-between items-center rounded-3xl left-1/2 transform -translate-x-1/2 mt-3
+"
     >
       <div className="flex items-center gap-3">
         <Image
@@ -39,18 +46,31 @@ const Header = () => {
           className="cursor-pointer"
           onClick={() => router.push('/')}
         />
-        <span className="font-semibold text-lg hidden sm:block">Restauracja</span>
+        <span className="text-3xl hidden sm:block" style={{ fontFamily: 'var(--font-great-vibes), cursive' }}>
+          Dolmamama Restauracja
+        </span>
       </div>
 
       <nav className="hidden lg:flex gap-3 font-semibold text-lg">
-        <Link href="#history" className="hover:bg-gray-100 duration-300 rounded-xl p-3">
+        <button onClick={() => scrollToSection('history')} className="hover:bg-gray-100 duration-300 rounded-xl p-3">
           Historia
-        </Link>
-        <Button label="Rezerwacja" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
-        <Button label="Menu" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
-        <Button label="Dostawa" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
-        <Button label="Opinie" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
-        <Button label="Kontakt" className="hover:bg-gray-100 duration-300 rounded-xl p-3" />
+        </button>
+        <button
+          onClick={() => scrollToSection('reservation_section')}
+          className="hover:bg-gray-100 duration-300 rounded-xl p-3"
+        >
+          Rezeracja
+        </button>
+        <button onClick={() => scrollToSection('menu')} className="hover:bg-gray-100 duration-300 rounded-xl p-3">
+          Menu
+        </button>
+        <button onClick={() => scrollToSection('feedback')} className="hover:bg-gray-100 duration-300 rounded-xl p-3">
+          Opinie
+        </button>
+        <button onClick={() => scrollToSection('contact')} className="hover:bg-gray-100 duration-300 rounded-xl p-3">
+          Kontakt
+        </button>
+
         <Button
           label="Login"
           className="hover:bg-gray-100 duration-300 rounded-xl p-3 cursor-pointer"
@@ -75,7 +95,6 @@ const Header = () => {
           </Link>
           <Button label="Rezerwacja" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
           <Button label="Menu" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
-          <Button label="Dostawa" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
           <Button label="Opinie" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
           <Button label="Kontakt" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" />
           <Button label="Login" className="hover:bg-gray-100 rounded-xl p-3 w-4/5" onClick={handleNavigateToLogin} />
