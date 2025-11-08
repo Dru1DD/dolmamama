@@ -1,0 +1,66 @@
+import Image from 'next/image';
+
+const History_Section = () => {
+  return (
+    <section className="py-16 bg-white flex" id="history">
+      <div
+        className="container
+       mx-auto 
+       px-3
+       md:px-12 
+       flex flex-col md:flex-col
+       items-center justify-between gap-12
+       md:w-1/2"
+      >
+        <h2
+          className="sm:text-5xl lg:text-[5rem] italic  w-full text-center whitespace-nowrap leading-tight mt-10"
+          style={{ fontFamily: 'var(--font-great-vibes), cursive' }}
+        >
+          Nasza <span className="text-gray-500">Historia</span>
+        </h2>
+        <p className="text-xl">
+          W starej części Tbilisi, wśród wąskich uliczek i starych domów, młody przedsiębiorca o imieniu Lewan
+          postanowił otworzyć restaurację. Zainspirowany przepisami ukochanej mamy i wspomnieniami z dzieciństwa o
+          rodzinnych biesiadach, nazwał swój lokal „Dolmamama”. Lewan chciał stworzyć miejsce, w którym każdy gość
+          mógłby poczuć ciepło gruzińskiej gościnności. Używał wyłącznie świeżych lokalnych składników i stosował
+          tradycyjne przepisy, aby odtworzyć prawdziwe smaki Kaukazu.
+          <br />Z czasem „Dolmamama” stała się popularnym miejscem wśród mieszkańców i turystów. Gości przyciągały nie
+          tylko aromaty tradycyjnych potraw, ale też serdeczność Lewana, który każdego witał jak dawnego przyjaciela.
+          Pewnego wieczoru do restauracji przyszła starsza kobieta — okazało się, że znała jego mamę. Po spróbowaniu
+          dolmy wzruszyła się do łez, mówiąc, że smak przypomniał jej młodość. Dla Lewana był to znak, że osiągnął swój
+          cel — stworzył miejsce, w którym jedzenie łączy ludzi i budzi wspomnienia.
+        </p>
+
+        <div className="flex flex-wrap justify-center md:justify-start gap-10 mt-8 text-2xl">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-gray-500 mb-l">Najlepsze</h3>
+            <p>Wino</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-gray-500 mb-l">Firmowa dolma</h3>
+            <p>Za przepisem</p>
+            <p>Babci Lewana</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-lg font-semibold text-gray-500 mb-l d">Bardzo pyszne</h3>
+            <p>Chaczapuri</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="hidden md:flex md:w-1/2 flex-wrap justify-center gap-6">
+        <div className="shadow-xl rounded-m overflow-hidden object-cover -mb-20 z-20">
+          <Image src={'/images/history_section/hs1.jpg'} width={250} height={150} alt="" />
+        </div>
+        <div className="shadow-xl rounded-m overflow-hidden mb-[-70px] z-10">
+          <Image src={'/images/history_section/hs2.jpg'} width={250} height={150} alt="" />
+        </div>
+        <div className="shadow-xl rounded-m overflow-hidden">
+          <Image src={'/images/history_section/hs3.jpg'} width={250} height={150} alt="" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default History_Section;

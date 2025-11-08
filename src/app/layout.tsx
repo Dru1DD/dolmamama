@@ -1,9 +1,14 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Playwrite_PL } from 'next/font/google';
+import { Geist, Geist_Mono, Great_Vibes } from 'next/font/google';
 import { RootProviders } from '@/providers/root-providers';
+import '../styles/global.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-const playWritePL = Playwrite_PL({
-  variable: '--font-playwrite',
+const greatVibes = Great_Vibes({
+  variable: '--font-great-vibes',
+  subsets: ['latin'],
+  weight: '400',
 });
 
 const geistSans = Geist({
@@ -28,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playWritePL.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable} antialiased`}>
         <RootProviders>{children}</RootProviders>
       </body>
     </html>
