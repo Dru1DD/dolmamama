@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return (
-    <footer id="contact" className="w-full bg-gray-200 mt-10 py-10 px-5">
+    <footer id="contact" className="w-full bg-gray-200  py-10 px-5">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
         <div>
           <h2 className="font-bold text-lg mb-3">Dane kontaktowe</h2>

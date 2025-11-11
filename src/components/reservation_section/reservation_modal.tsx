@@ -1,6 +1,8 @@
 'use client';
 
+import { useReservationMutation } from '@/hooks/use-reservation-mutation';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 interface Props {
   onClose: () => void;
@@ -15,6 +17,7 @@ const ReservationModal = ({ onClose }: Props) => {
     guests: 1,
     notes: '',
   });
+  const { mutateAsync: createReservation } = useReservationMutation();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -23,17 +26,13 @@ const ReservationModal = ({ onClose }: Props) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch('/api/reservations', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
+    const res = await createReservation(form);
 
-    if (res.ok) {
-      alert('Rezerwacja zapisana!');
+    if (res.status === 200) {
+      toast('Rezerwacja zapisana!');
       onClose();
     } else {
-      alert('Błąd podczas rezerwacji.');
+      toast('Błąd podczas rezerwacji.', { type: 'error' });
     }
   };
 
