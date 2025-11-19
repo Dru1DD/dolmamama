@@ -49,14 +49,14 @@ const ReservationModal = ({ onClose }: Props) => {
           <input
             name="name"
             placeholder="Imię i nazwisko"
-            className="border p-2 rounded"
+            className="bg-gray-300/50 p-2 rounded-lg shadow-md w-full max-w-md"
             onChange={handleChange}
             required
           />
           <input
             name="phone_number"
             placeholder="Numer telefonu"
-            className="border p-2 rounded"
+            className="bg-gray-300/50 p-2 rounded-lg shadow-md w-full max-w-md"
             onChange={handleChange}
             required
           />
@@ -64,22 +64,31 @@ const ReservationModal = ({ onClose }: Props) => {
             name="email"
             type="email"
             placeholder="Email"
-            className="border p-2 rounded"
+            className="bg-gray-300/50 p-2 rounded-lg shadow-md w-full max-w-md"
             onChange={handleChange}
             required
           />
-          <input name="time" type="datetime-local" className="border p-2 rounded" onChange={handleChange} required />
+          <input
+            name="time"
+            type="datetime-local"
+            className="bg-gray-300/50 p-2 rounded-lg shadow-md w-full max-w-md"
+            onChange={handleChange}
+            required
+          />
           <input
             name="guests"
             type="number"
             min={1}
             max={20}
             placeholder="Liczba gości"
-            className="border p-2 rounded"
+            className="bg-gray-300/50 p-2 rounded-xl shadow-md w-full max-w-md"
             onChange={handleChange}
             required
           />
-          <button type="submit" className="bg-black text-white py-2 rounded hover:bg-black/70 transition">
+          <button
+            type="submit"
+            className="bg-black p-2 text-white rounded-lg shadow-md w-full max-w-md hover:bg-black/70 transition"
+          >
             Zarezerwuj
           </button>
         </form>

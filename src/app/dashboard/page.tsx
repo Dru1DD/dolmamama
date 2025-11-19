@@ -2,63 +2,41 @@
 
 import Button from '@/components/button';
 import { signOut, useSession } from 'next-auth/react';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import AdminDashboard from '@/components/dashboard//admin/admin_dashboard';
+import CustomerDashboard from '@/components/dashboard/customer/customer_dashboard';
+import { useMemo } from 'react';
 
 const DashboardPage = () => {
   const { data: session } = useSession();
 
-  const role = session?.user?.role || 'customer';
+  const role = useMemo(() => session?.user?.role || 'customer', [session?.user]);
 
   const handleSignOutClicked = () => {
     void signOut();
   };
 
-  const renderAdminContent = () => (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Panel administratora</h1>
-      <p className="mb-2">
-        Witaj, <strong>{session?.user?.name || 'Admin'}</strong>!
-      </p>
-      <p className="mb-2">Masz pełny dostęp do ustawień systemu, użytkowników i raportów.</p>
-      <ul className="list-disc list-inside mb-4">
-        <li>📊 Podgląd statystyk: aktywni użytkownicy, zamówienia, przychody.</li>
-        <li>👥 Zarządzanie kontami użytkowników.</li>
-        <li>🛠 Edycja treści strony i ustawień aplikacji.</li>
-      </ul>
-      <p>
-        Ostatnie logowanie: <em>25 października 2025, 14:32</em>
-      </p>
-    </div>
-  );
-
-  const renderCustomerContent = () => (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Twoje konto</h1>
-      <p className="mb-2">
-        Cześć, <strong>{session?.user?.name || 'Użytkowniku'}</strong>!
-      </p>
-      <p className="mb-2">
-        Witamy w Twoim panelu klienta. Tutaj możesz sprawdzić swoje zamówienia, zaktualizować dane osobowe i śledzić
-        status wysyłki.
-      </p>
-      <ul className="list-disc list-inside mb-4">
-        <li>🛍 Moje zamówienia</li>
-        <li>📦 Status dostawy</li>
-        <li>⚙️ Ustawienia konta</li>
-      </ul>
-      <p>
-        Ostatnia aktywność: <em>25 października 2025, 11:47</em>
-      </p>
-    </div>
-  );
-
   return (
-    <div className="p-6">
-      {role === 'admin' ? renderAdminContent() : renderCustomerContent()}
+    <>
+      <Header />
 
-      <div className="mt-6">
-        <Button label={'Wyloguj się'} onClick={handleSignOutClicked} />
+      <div className="min-h-screen bg-white flex justify-center items-start py-16 px-4 mt-20">
+        <div className="w-full max-w-3xl bg-white shadow-2xl rounded-3xl p-10 relative">
+          {role === 'Admin' ? <AdminDashboard /> : <CustomerDashboard />}
+
+          <div className="mt-10 text-center">
+            <Button
+              label={'Wyloguj się'}
+              onClick={handleSignOutClicked}
+              className="bg-black hover:bg-black/50 text-white px-6 py-3 rounded-xl shadow-2xl duration-500"
+            />
+          </div>
+        </div>
       </div>
-    </div>
+
+      <Footer />
+    </>
   );
 };
 
