@@ -7,6 +7,7 @@ export const useReservationQuery = () => {
 
   return useQuery({
     queryKey: ['reservation', session?.user.email],
-    queryFn: async () => await axios.get(`/api/reservations?email=${session?.user.email}`),
+    enabled: !!session?.user.email,
+    queryFn: async () => axios.get(`/api/reservations/add_reservation?email=${session?.user.email}`),
   });
 };

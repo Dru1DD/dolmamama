@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
-export const useUpdateDish = () => {
+export const useUpdateMenuMutation = () => {
   const client = useQueryClient();
 
   return useMutation({
