@@ -6,6 +6,7 @@ import { signIn } from 'next-auth/react';
 import { validateEmail, validatePassword } from '@/utils/validation';
 import { toast } from 'react-toastify';
 import Button from '@/components/button';
+import { useRouter } from 'next/navigation';
 
 interface InputProperty {
   value: string;
@@ -72,6 +73,12 @@ const LoginPage = () => {
     }
   };
 
+  const router = useRouter();
+
+  const handleOrder = () => {
+    router.push('/');
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-white text-black">
       <form onSubmit={handleSubmit} className="bg-gray-300/50 p-8 rounded-lg shadow-md w-full max-w-md">
@@ -105,6 +112,12 @@ const LoginPage = () => {
           isLoading={isLoading}
           className="w-full bg-black text-white hover:bg-black/30 duration-500 transition py-2 rounded-2xl shadow-2xl font-bold mt-2"
         />
+        <button
+          className=" bg-black px-3 py-2 text-white hover:bg-black/30 duration-500 transition mt-2 rounded-2xl w-full shadow-2xl right"
+          onClick={handleOrder}
+        >
+          Cofnij
+        </button>
 
         <div className="text-center mt-4 text-sm">
           Nie masz konto?{' '}

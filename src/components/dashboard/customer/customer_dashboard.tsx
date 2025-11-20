@@ -1,10 +1,16 @@
 import { useReservationQuery } from '@/hooks/use-reservation-query';
+import { useDeleteReservationMutation } from '@/hooks/use-reservation-delete-mutation';
 import { format } from 'date-fns';
 import { useSession } from 'next-auth/react';
 
 const CustomerDashboard = () => {
   const { data: session } = useSession();
   const { data: reservationList } = useReservationQuery();
+  const { mutate: deleteReservation } = useDeleteReservationMutation();
+
+  const handleDeleteClick = (id: string) => {
+    deleteReservation(id);
+  };
 
   return (
     <section className="w-full">
@@ -45,8 +51,12 @@ const CustomerDashboard = () => {
                   <p>
                     <strong>Email:</strong> {item.email}
                   </p>
-                  <button className="bg-black hover:bg-black/50 text-white px-3 py-3 rounded-xl shadow-2xl duration-500 mt-3">
-                    Usuń reserwacje
+
+                  <button
+                    onClick={() => handleDeleteClick(item.id)}
+                    className="bg-black px-3 py-2 text-white hover:bg-black/30 duration-500 transition mt-2 rounded-2xl w-full shadow-2xl right"
+                  >
+                    Usuń rezerwację
                   </button>
                 </div>
               </div>

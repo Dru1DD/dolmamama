@@ -7,7 +7,7 @@ interface Result {
 export const useReservationMutation = () => {
   return useMutation<Result, DefaultError, any>({
     mutationFn: async (form) => {
-      return await axios.post('/api/reservations', {
+      return await axios.post('/api/reservations/add_reservation', {
         ...form,
       });
     },
