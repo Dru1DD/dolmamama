@@ -4,7 +4,7 @@ import Button from '@/components/button';
 import { signOut, useSession } from 'next-auth/react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
-import AdminDashboard from '@/components/dashboard//admin/admin_dashboard';
+import AdminDashboard from '@/components/dashboard/admin/admin_dashboard/page';
 import CustomerDashboard from '@/components/dashboard/customer/customer_dashboard';
 import { useMemo } from 'react';
 
